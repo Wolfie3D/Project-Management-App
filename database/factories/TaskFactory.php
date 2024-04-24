@@ -22,10 +22,12 @@ class TaskFactory extends Factory
             'due_date' => fake()->date('now', '+1 year'),
             'status' => fake()->randomElement(['pending', 'completed', 'in_progress']),
             'priority' => fake()->randomElement(['high', 'low', 'medium']),
-            'image-path' => fake()->imageUrl(),
+            'image_path' => fake()->imageUrl(),
             'assigned_user_id' => 1,
-            'created_at' => 1,
-            'updated_at' => 1
+            'created_by' => 1,
+            'updated_by' => 1,
+            'created_at' => time(),
+            'updated_at' => time()
         ];
     }
 }
