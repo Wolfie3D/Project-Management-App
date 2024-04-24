@@ -1,3 +1,4 @@
+import Paginataion from "@/Components/Pagination";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, Link } from "@inertiajs/react";
 
@@ -37,17 +38,23 @@ export default function index({ auth, projects }) {
                   {projects.data.map((project) => (
                     <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                       <th className="px-3 py-2">{project.id}</th>
-                      <td className="px-3 py-2">{project.created_at}</td>
+                      <td className="px-3 py-2 text-nowrap">
+                        {project.created_at}
+                      </td>
                       <td className="px-3 py-2">{project.name}</td>
                       <td className="px-3 py-2">
                         <img
                           src={project.image_path}
-                          style={{ width: 60 }}
+                          style={{ width: 100 }}
                           alt="the project"
                         />
                       </td>
-                      <td className="px-3 py-2">{project.created_by.name}</td>
-                      <td className="px-3 py-2">{project.due_date}</td>
+                      <td className="px-3 py-2 text-nowrap">
+                        {project.created_by.name}
+                      </td>
+                      <td className="px-3 py-2 text-nowrap">
+                        {project.due_date}
+                      </td>
                       <td className="px-3 py-2">{project.status}</td>
                       <td className="px-3 py-2">
                         <Link
@@ -68,6 +75,7 @@ export default function index({ auth, projects }) {
                   ))}
                 </tbody>
               </table>
+              <Paginataion links={projects.meta.links} />
             </div>
           </div>
         </div>

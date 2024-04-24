@@ -20,7 +20,7 @@ class ProjectFactory extends Factory
             'name' => fake()->sentence(),
             'description' => fake()->realText(),
             'due_date' => fake()->date('now', '+1 year'),
-            'status' => fake()->randomElement(['pending', 'completed', 'in_progress']),
+            'status' => fake()->randomElement(['pending', 'completed', 'in progress']),
             'image_path' => fake()->imageUrl(),
             'created_by' => 1,
             'updated_by' => 1,
