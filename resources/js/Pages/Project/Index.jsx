@@ -8,6 +8,7 @@ import {
 } from "@/constants.jsx";
 import { Head, Link, router } from "@inertiajs/react";
 import { ChevronUpIcon, ChevronDownIcon } from "@heroicons/react/24/solid";
+import TableHandling from "@/Components/TableHandling";
 
 export default function index({ auth, projects, queryParams = null }) {
   queryParams = queryParams || {};
@@ -62,53 +63,54 @@ export default function index({ auth, projects, queryParams = null }) {
                 dark:bg-gray-700 dark:text-gray-400 border-b-2 border-gray-500'
                   >
                     <tr className='text-nowrap'>
-                      <th onClick={(e) => sortChanged("id")}>
-                        <div className='px-3 py-2 flex items-center justify-between gap-1'>
-                          ID
-                          <div>
-                            <ChevronUpIcon className='w-4' />
-                            <ChevronDownIcon className='w-4 -mt-2' />
-                          </div>
-                        </div>
-                      </th>
-                      <th onClick={(e) => sortChanged("created_at")}>
-                        <div className='px-3 py-2 flex items-center justify-between gap-1'>
-                          Created Date
-                          <div>
-                            <ChevronUpIcon className='w-4' />
-                            <ChevronDownIcon className='w-4 -mt-2' />
-                          </div>
-                        </div>
-                      </th>
-                      <th onClick={(e) => sortChanged("created_at")}>
-                        <div className='px-3 py-2 flex items-center justify-between gap-1'>
-                          Name
-                          <div>
-                            <ChevronUpIcon className='w-4' />
-                            <ChevronDownIcon className='w-4 -mt-2' />
-                          </div>
-                        </div>
-                      </th>
+                      <TableHandling
+                        name='id'
+                        sort_field={queryParams.sort_field}
+                        sort_direction={queryParams.sort_direction}
+                        sortChanged={sortChanged}
+                      >
+                        ID
+                      </TableHandling>
+
+                      <TableHandling
+                        name='created_at'
+                        sort_field={queryParams.sort_field}
+                        sort_direction={queryParams.sort_direction}
+                        sortChanged={sortChanged}
+                      >
+                        Created Date
+                      </TableHandling>
+
+                      <TableHandling
+                        name='name'
+                        sort_field={queryParams.sort_field}
+                        sort_direction={queryParams.sort_direction}
+                        sortChanged={sortChanged}
+                      >
+                        Name
+                      </TableHandling>
+
                       <th className='px-3 py-2'>Image</th>
                       <th className='px-3 py-2'>Created By</th>
-                      <th onClick={(e) => sortChanged("created_at")}>
-                        <div className='px-3 py-2 flex items-center justify-between gap-1'>
-                          Due Date
-                          <div>
-                            <ChevronUpIcon className='w-4' />
-                            <ChevronDownIcon className='w-4 -mt-2' />
-                          </div>
-                        </div>
-                      </th>
-                      <th onClick={(e) => sortChanged("created_at")}>
-                        <div className='px-3 py-2 flex items-center justify-between gap-1'>
-                          Status
-                          <div>
-                            <ChevronUpIcon className='w-4' />
-                            <ChevronDownIcon className='w-4 -mt-2' />
-                          </div>
-                        </div>
-                      </th>
+
+                      <TableHandling
+                        name='due_date'
+                        sort_field={queryParams.sort_field}
+                        sort_direction={queryParams.sort_direction}
+                        sortChanged={sortChanged}
+                      >
+                        Due Date
+                      </TableHandling>
+
+                      <TableHandling
+                        name='status'
+                        sort_field={queryParams.sort_field}
+                        sort_direction={queryParams.sort_direction}
+                        sortChanged={sortChanged}
+                      >
+                        Status
+                      </TableHandling>
+
                       <th className='px-3 py-2 items-center justify-between gap-1'>
                         Actions
                       </th>
