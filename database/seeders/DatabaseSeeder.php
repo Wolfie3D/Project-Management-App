@@ -14,7 +14,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
 
         User::factory()->create([
             'name' => 'Chris Kamau',
@@ -23,6 +22,6 @@ class DatabaseSeeder extends Seeder
             'email_verified_at' => time()
         ]);
 
-        Project::factory()->count(100)->hasTasks(15)->create();
+        Project::factory()->count(30)->hasTasks(5)->create();
     }
 }

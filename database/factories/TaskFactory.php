@@ -19,7 +19,7 @@ class TaskFactory extends Factory
         return [
             'name' => fake()->sentence(),
             'description' => fake()->realText(),
-            'due_date' => fake()->date('now', '+1 year'),
+            'due_date' => fake()->dateTimeBetween('now', '+1 year')->format('Y-m-d'),
             'status' => fake()->randomElement(['pending', 'completed', 'in_progress']),
             'priority' => fake()->randomElement(['high', 'low', 'medium']),
             'image_path' => fake()->imageUrl(),
