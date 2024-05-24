@@ -1,20 +1,9 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { Head, router } from "@inertiajs/react";
+import { Head } from "@inertiajs/react";
 
 import TasksTable from "./TasksTable";
 
-export default function index({ auth, tasks, queryParams = null }) {
-  queryParams = queryParams || {};
-
-  const searchFieldChanged = (name, value) => {
-    if (value) {
-      queryParams[name] = value;
-    } else {
-      delete queryParams[name];
-    }
-    router.get(route("task.index"), queryParams);
-  };
-
+export default function index({ auth, tasks }) {
   return (
     <AuthenticatedLayout
       user={auth.user}
