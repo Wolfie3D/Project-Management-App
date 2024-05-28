@@ -2,7 +2,7 @@ import Pagination from "@/Components/Pagination";
 import TextInput from "@/Components/TextInput";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, Link, router } from "@inertiajs/react";
-import TableHeading from "@/Components/TableHeading";
+import TableHeading from "@/Components/TableHandling";
 
 export default function Index({ auth, users, queryParams = null, success }) {
   queryParams = queryParams || {};
