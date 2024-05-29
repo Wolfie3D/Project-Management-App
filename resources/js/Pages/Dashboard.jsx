@@ -70,16 +70,17 @@ export default function Dashboard({
                 <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 border-b-2 border-gray-500'>
                   <tr>
                     <th className='px-3 py-3'>ID</th>
+                    <th className='px-3 py-3'>Due Date</th>
                     <th className='px-3 py-3'>Project Name</th>
                     <th className='px-3 py-3'>Name</th>
                     <th className='px-3 py-3'>Status</th>
-                    <th className='px-3 py-3'>Due Date</th>
                   </tr>
                 </thead>
                 <tbody>
                   {activeTasks.data.map((task) => (
                     <tr key={task.id}>
                       <td className='px-3 py-2'>{task.id}</td>
+                      <td className='px-3 py-2 text-nowrap'>{task.due_date}</td>
                       <td className='px-3 py-2 text-white hover:underline'>
                         <Link href={route("project.show", task.project.id)}>
                           {task.project.name}
@@ -99,7 +100,6 @@ export default function Dashboard({
                           {TASK_STATUS_TEXT_MAP[task.status]}
                         </span>
                       </td>
-                      <td className='px-3 py-2 text-nowrap'>{task.due_date}</td>
                     </tr>
                   ))}
                 </tbody>

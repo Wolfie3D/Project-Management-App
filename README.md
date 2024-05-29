@@ -1,66 +1,77 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Project Management System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Introduction
 
-## About Laravel
+This project is a Project Management System built using Laravel 11 for the backend and Inertia.js with React for the frontend. It provides functionalities for managing users, tasks, and projects. This README will guide you through the features and route definitions used in the application.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Technologies Used
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+1. Laravel 11: A framework for building web applications.
+2. Inertia.js: A library that allows you to create modern single-page applications (SPAs) using traditional server-side routing and controllers.
+3. React: A library for building user interfaces, used here to create a dynamic and responsive frontend.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Features
 
-## Learning Laravel
+User Authentication and Verification: Secure user login and email verification.
+User Profile Management: Users can edit, update, and delete their profiles.
+Task Management: Users can create, view, update, and delete tasks. They can also view tasks assigned to them.
+Project Management: Users can create, view, update, and delete projects.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Routes
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Public Routes
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Redirect to Dashboard: Automatically redirects from the home page to the dashboard.
 
-## Laravel Sponsors
+### Protected Routes
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+These routes are protected by authentication middleware.
 
-### Premium Partners
+## Authenticated and Verified Users
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+Routes within this group require the user to be logged in and their email verified.
 
-## Contributing
+### Dashboard
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+GET /dashboard: Displays the dashboard.
 
-## Code of Conduct
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Task Management
 
-## Security Vulnerabilities
+GET /task/my-tasks: Shows tasks assigned to the logged-in user.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Route::get('task/my-tasks', [TaskController::class, 'myTasks'])->name('task.myTasks');
 
-## License
+Task Resource Routes: Allows creating, viewing, updating, and deleting tasks.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Route::resource('task', TaskController::class);
+
+### User Management
+
+User Resource Routes: Allows creating, viewing, updating, and deleting users.
+
+Route::resource('user', UserController::class);
+
+### Project Management
+
+Project Resource Routes: Allows creating, viewing, updating, and deleting projects.
+
+Route::resource('project', ProjectController::class);
+
+### Profile Management
+
+GET /profile: Displays the profile edit form.
+
+Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+
+PATCH /profile: Updates profile information.
+
+Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+DELETE /profile: Deletes the user profile.
+
+Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+## Conclusion
+
+This Project Management System leverages the power of Laravel 11, Inertia.js, and React to provide a seamless and efficient user experience. It offers robust features for managing users, tasks, and projects, making it a comprehensive tool for project management. For further customization or contribution, feel free to explore and modify the codebase as needed.
