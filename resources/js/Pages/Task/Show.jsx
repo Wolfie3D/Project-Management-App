@@ -74,7 +74,7 @@ export default function Show({ auth, task }) {
                   </div>
                   <div className='mt-4'>
                     <label className='font-bold text-lg'>Created By</label>
-                    <p className='mt-1'>{task.createdBy.name}</p>
+                    <p className='mt-1'>{task.created_by.name}</p>
                   </div>
                 </div>
                 <div>
@@ -88,7 +88,7 @@ export default function Show({ auth, task }) {
                   </div>
                   <div className='mt-4'>
                     <label className='font-bold text-lg'>Updated By</label>
-                    <p className='mt-1'>{task.updatedBy.name}</p>
+                    <p className='mt-1'>{task.updated_by.name}</p>
                   </div>
                   <div className='mt-4'>
                     <label className='font-bold text-lg'>Project</label>
