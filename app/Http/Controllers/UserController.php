@@ -6,6 +6,8 @@ use App\Http\Resources\UserCrudResource;
 use App\Models\User;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use Illuminate\Routing\Controller;
+
 
 class UserController extends Controller
 {

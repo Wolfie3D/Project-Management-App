@@ -11,6 +11,8 @@ use App\Http\Requests\UpdateProjectRequest;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Routing\Controller;
+
 
 
 class ProjectController extends Controller
